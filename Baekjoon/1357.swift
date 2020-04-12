@@ -1,0 +1,5 @@
+let num = readLine()!.split(separator: " ")
+var n1 = String(num[0].reversed())
+var n2 = String(num[1].reversed())
+var result = String(String(Int(n1)! + Int(n2)!).reversed())
+print(Int(result)!)
