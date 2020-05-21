@@ -1,0 +1,35 @@
+import Foundation
+
+func solution(_ board:[[Int]], _ moves:[Int]) -> Int {
+    var map: [[Int]] = []
+    let length: Int = board.count
+    var bascket: [Int] = []
+    var count: Int = 0
+
+    for i in 0..<length {
+        var arr: [Int] = []
+        for j in 0..<length {
+            arr.append(board[j][i])
+        }
+        map.append(arr)
+    }
+
+    for i in 0..<moves.count {
+        let move = moves[i] - 1
+
+        if let index = map[move].firstIndex(where: {$0 > 0}) {
+            let item = map[move][index]
+            bascket.append(item)
+            map[move].remove(at: index)
+
+            if bascket.count >= 2 {
+                if bascket.last == bascket[bascket.index(bascket.endIndex, offsetBy: -2)] {
+                    bascket.removeLast()
+                    bascket.removeLast()
+                    count += 2
+                }
+            }
+        }
+    }
+    return count
+}
