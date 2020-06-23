@@ -31,4 +31,19 @@ func heap(size: Int) {
     }
 }
 
-heap(size: length)
+
+/// 3. nPr
+func permutation(arr: Array<Int>, startIndex: Int) {
+    var arr = arr
+    var length = arr.count
+    if startIndex == length - 1 {
+        print(arr)
+        return
+    }
+    
+    for i in startIndex..<length-1 {
+        arr.swapAt(startIndex, i)
+        permutation(arr, startIndex + 1)
+        arr.swapAt(startIndex, i)
+    }
+}
